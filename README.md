@@ -1,6 +1,15 @@
 # Promptly
 
-Navigating the command line is tough, even for some intermediate and advanced developers. There's a vast catalog of commands to traverse through gigantic file systems, and it's difficult to remember the functionality of most, let alone all, of these commands. Promptly aims to fix this problem by providing you with a super easy, customizable, sleek command line interface that makes your scripting experience a breeze. With concise aliases, robust functionality, and a transparent setup, Promptly enhances your command line experience so that you never have to worry about forgetting a shell command again.
+Navigating the Mac command line is tough, even for some intermediate and advanced developers. There's a vast catalog of commands to traverse through gigantic file systems, and it's difficult to remember the functionality of most, let alone all, of these commands. Promptly aims to fix this problem by providing you with a super easy, customizable, sleek command line interface that makes your Mac's scripting experience a breeze. With concise aliases, robust functionality, and a transparent setup, Promptly enhances your command line experience so that you never have to worry about forgetting a shell command again.
+
+## Functionalities
+
+To call a Promptly function, simply use the prefix `pmt`. Promptly commands include, but are not limited to:
+1. **System Checks**. Promptly allows you to check what items are taking up storage on your Mac that may be difficult to find.
+2. **Docker Control**. The Docker command line can be verbose, but Promptly easily abstracts the process of viewing containers and images, disk usage, and cleaning up your Docker items.
+3. **Git**. With so many version control commands, Promptly creates sub-aliases for those obscure Git commands that are so useful, but so frustrating to memorize.
+
+For a full list of Promptly capabilities, simply run `pmt help`. 
 
 ## Setup
 1. Ensure you have Go installed on your system. If not: visit `https://go.dev` to install.
