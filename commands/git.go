@@ -7,16 +7,13 @@ import (
 )
 
 func Git(args []string) error {
-	if len(args) < 1 {
-		return fmt.Errorf("error: please provide a Git command (or run 'pmt git help' for more information)")
-	}
 
-	subcommand := args[0]
-	subcommandArgs := args[1:]
+	command := args[0]
+	commandArgs := args[1:]
 
-	switch subcommand {
+	switch command {
 
-	case "pushnew":
+	case "gpn":
 		branchNameBytes, err := exec.Command("git", "symbolic-ref", "--short", "HEAD").Output()
 		if err != nil {
 			return fmt.Errorf("error: failed to resolve current branch: %v", err)
@@ -27,52 +24,41 @@ func Git(args []string) error {
 		}
 		return executeGitCommand("push", "--set-upstream", "origin", branch)
 
-	case "recommit":
+	case "grcmt":
 		cmds := [][]string{
 			{"add", "-A"},
 			{"commit", "--amend", "--no-edit"},
 			{"push", "--force"},
 		}
-		return runGitSequence(cmds)
+		for _, cmd := range cmds {
+			if err := executeGitCommand(cmd[0], cmd[1:]...); err != nil {
+				return err
+			}
+		}
+		return nil
 
-	case "stash":
-		if len(subcommandArgs) < 1 {
+	case "gsts":
+		if len(commandArgs) < 1 {
 			return executeGitCommand("stash", "-u")
 		}
 
-		if len(subcommandArgs) >= 2 {
-			return fmt.Errorf("error: too many arguments for 'git stash' subcommand")
+		if len(commandArgs) >= 2 {
+			return fmt.Errorf("error: too many arguments for 'git stash' command")
 		}
 
-		return executeGitCommand("stash", "push", "-u", "-m", subcommandArgs[0])
+		return executeGitCommand("stash", "push", "-u", "-m", commandArgs[0])
 
-	case "help":
-		helpText := `Promptly Git Subcommands:
-						pushnew        Push the current branch to origin, setting upstream if needed.
-						recommit       Amend the last commit with all current changes and force-push.
-						stash [msg]    Stash all changes (including untracked). Optionally provide a message.
+	default:
+		helpText := `Promptly Git commands:
+						gpn           Push the current branch to origin, setting upstream if needed.
+						grcmt         Amend the last commit with all current changes and force-push.
+						gsts [msg]    Stash all changes (including untracked). Optionally provide a message.
 						Usage:
-						pmt git <subcommand> [arguments]
+						pmt <command> [arguments]
 					`
 		fmt.Println(helpText)
 		return nil
-
-	default:
-		return fmt.Errorf("error: unknown Git command: %s", subcommand)
 	}
-}
-
-// runGitSequence executes a list of git subcommands in order, stopping on first error.
-func runGitSequence(cmds [][]string) error {
-	for _, c := range cmds {
-		if len(c) == 0 {
-			continue
-		}
-		if err := executeGitCommand(c[0], c[1:]...); err != nil {
-			return err
-		}
-	}
-	return nil
 }
 
 func executeGitCommand(command string, args ...string) error {

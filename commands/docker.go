@@ -9,27 +9,24 @@ func Docker(args []string) error {
 		return fmt.Errorf("error: please provide a Docker command (or run 'pmt docker help' for more information)")
 	}
 
-	subcommand := args[0]
-	subcommandArgs := args[1:]
+	command := args[0]
+	commandArgs := args[1:]
 
-	switch subcommand {
+	switch command {
 
-	case "help":
-		helpText := `Promptly Docker Subcommands:
-						help           Show this help message.
+	case "dusg": // Docker usage
+		return nil // implement later
+
+	case "dcln": // Docker clean
+		return nil // implement later
+
+	default:
+		helpText := `Promptly Docker commands:
+						
 						Usage:
-						pmt docker <subcommand> [arguments]
+						pmt <command> [arguments]
 					`
 		fmt.Println(helpText)
 		return nil
-
-	default:
-		return fmt.Errorf("error: unknown Docker command: %s", subcommand)
 	}
-}
-
-func executeDockerCommand(command string, args ...string) error {
-	// Placeholder for Docker command execution logic
-	// In a real implementation, you would use os/exec to run Docker commands
-	return fmt.Errorf("error executing docker %s: command not implemented", command)
 }
