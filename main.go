@@ -14,13 +14,13 @@ func main(args []string) error {
 	switch args[1][0] {
 
 	case 'g':
-		return commands.Git(args[1:])
+		return commands.Git(args)
 
 	case 'd':
-		return commands.Docker(args[1:])
+		return commands.Docker(args)
 
 	case 's':
-		return commands.System(args[1:])
+		return commands.System(args)
 
 	default:
 		return commands.Help()

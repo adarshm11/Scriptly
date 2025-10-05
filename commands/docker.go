@@ -10,7 +10,7 @@ func Docker(args []string) error {
 	}
 
 	command := args[0]
-	commandArgs := args[1:]
+	// commandArgs := args[1:]
 
 	switch command {
 
