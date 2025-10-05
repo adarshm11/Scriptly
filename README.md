@@ -16,4 +16,4 @@ For a full list of Promptly capabilities, simply run `pmt help`.
 2. Clone this repository: `git clone https://github.com/adarshm11/Promptly.git`
 3. From the main directory, run `python setup.py` to set up the CLI.
 
-And you're all set! The setup script will compile all of the Go binaries, and set aliases for these inside your .bashrc or .zshrc file. You can customize these aliases to whatever you like by editing the `setup.py` file.
+And you're all set! The setup script will compile all of the Go binaries, and set aliases for these inside your .zshrc file. You can customize these aliases to whatever you like by editing the `setup.py` file.
