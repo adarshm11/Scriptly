@@ -35,7 +35,7 @@ func Docker(args []string) error {
 		}
 
 	default:
-		helpText := `Promptly Docker commands:
+		helpText := `
 						dps         List running containers.
 						du          Show Docker disk usage.
 						dpn         Prune unused Docker resources (containers, networks, images, volumes).

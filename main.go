@@ -1,28 +1,50 @@
-package promptly
+package main
 
 import (
 	"fmt"
+	"os"
 	"promptly/commands"
 )
 
-func main(args []string) error {
+func main() {
+	args := os.Args
 	if len(args) <= 1 {
-		// print usage information
-		return fmt.Errorf("no command provided")
+		err := commands.Help()
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
+		return
 	}
 
 	switch args[1][0] {
 
 	case 'g':
-		return commands.Git(args)
+		err := commands.Git(args)
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
 
 	case 'd':
-		return commands.Docker(args)
+		err := commands.Docker(args)
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
 
 	case 's':
-		return commands.System(args)
+		err := commands.System(args)
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
 
 	default:
-		return commands.Help()
+		err := commands.Help()
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
 	}
 }

@@ -142,7 +142,7 @@ func Git(args []string) error {
 		return executeGitCommand("merge", commandArgs[0])
 
 	default:
-		helpText := `Promptly Git commands:
+		helpText := `
 						gi            Initialize a new Git repository.
 						gcl <url>     Clone a Git repository from the provided URL.
 						gst           Show the working tree status.
