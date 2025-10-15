@@ -34,6 +34,28 @@ func Docker(args []string) error {
 			return fmt.Errorf("error: unknown prune option '%s'", args[1])
 		}
 
+	case "dc":
+		if len(args) == 1 {
+			return executeDockerCommand("compose", "up", "--build")
+		}
+		switch args[1] {
+		case "-d":
+			return executeDockerCommand("compose", "up", "--build", "-d")
+		case "-f":
+			if len(args) < 3 {
+				return fmt.Errorf("error: docker compose file not specified after '-f'")
+			}
+			return executeDockerCommand("compose", "-f", args[2], "up", "--build")
+		default:
+			return fmt.Errorf("error: unknown option '%s' for 'dc' command", args[1])
+		}
+
+	case "dcd":
+		if len(args) == 0 {
+			return executeDockerCommand("compose", "down")
+		}
+		return executeDockerCommand("compose", "-f", args[1], "down")
+
 	default:
 		helpText := `
 						dps         List running containers.
