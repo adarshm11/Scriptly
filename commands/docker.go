@@ -58,15 +58,22 @@ func Docker(args []string) error {
 
 	default:
 		helpText := `
-						dps         List running containers.
-						du          Show Docker disk usage.
-						dpn         Prune unused Docker resources (containers, networks, images, volumes).
-						dpn -i      Prune unused Docker images.
-						dpn -c      Prune stopped Docker containers.
-						dpn -v      Prune unused Docker volumes.
-						dpn -n      Prune unused Docker networks.
-						Usage:
-						pmt <command> [arguments]
+Docker Commands:
+  dps              List running containers.
+  du               Show Docker disk usage.
+  dpn              Prune unused Docker resources (containers, networks, images, volumes).
+  dpn -i           Prune unused Docker images.
+  dpn -c           Prune stopped Docker containers.
+  dpn -v           Prune unused Docker volumes.
+  dpn -n           Prune unused Docker networks.
+  dc               Start Docker Compose services (build and up).
+  dc -d            Start Docker Compose services in detached mode.
+  dc -f <file>     Start Docker Compose with specified compose file.
+  dcd              Stop and remove Docker Compose services.
+  dcd <file>       Stop and remove Docker Compose services using specified compose file.
+
+Usage:
+  pmt <command> [arguments]
 					`
 		fmt.Println(helpText)
 		return nil
