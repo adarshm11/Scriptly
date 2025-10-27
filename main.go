@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"promptly/commands"
+	"scriptly/commands"
 )
 
 func main() {

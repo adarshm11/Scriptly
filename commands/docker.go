@@ -73,7 +73,7 @@ Docker Commands:
   dcd <file>       Stop and remove Docker Compose services using specified compose file.
 
 Usage:
-  pmt <command> [arguments]
+  sc <command> [arguments]
 					`
 		fmt.Println(helpText)
 		return nil

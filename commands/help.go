@@ -6,14 +6,14 @@ import (
 
 func Help() error {
 	helpText := `
-		pmt s             System-related commands (e.g., storage checks).
-		pmt d             Docker-related commands (e.g., view containers, clean up).
-		pmt g             Git-related commands (e.g., push, commit, stash).
-		pmt help          Show help information.
+		sc s             System-related commands (e.g., storage checks).
+		sc d             Docker-related commands (e.g., view containers, clean up).
+		sc g             Git-related commands (e.g., push, commit, stash).
+		sc help          Show help information.
 
 		Usage:
-		pmt <command> [arguments]
-		For more information on a specific command, run 'pmt <command> help'.
+		sc <command> [arguments]
+		For more information on a specific command, run 'sc <command> help'.
 	`
 	fmt.Println(helpText)
 	return nil

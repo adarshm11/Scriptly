@@ -12,10 +12,10 @@ func System(args []string) error {
 	switch command {
 
 	default:
-		helpText := `Promptly System commands:
+		helpText := `Scriptly System commands:
 						sysinfo       Display system information.
 						Usage:
-						pmt <command> [arguments]
+						sc <command> [arguments]
 					`
 		fmt.Println(helpText)
 		return nil

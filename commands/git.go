@@ -161,7 +161,7 @@ func Git(args []string) error {
 						grb <branch>  Rebase current branch onto the specified branch.
 						gmg <branch>  Merge the specified branch into the current branch.
 						Usage:
-						pmt <command> [arguments]
+						sc <command> [arguments]
 					`
 		fmt.Println(helpText)
 		return nil
